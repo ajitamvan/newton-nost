@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEWTON HOST Payment</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      background: linear-gradient(to bottom right, #0f172a, #000);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .card, .payment-card {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn, .copy-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: cyan;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .btn:hover, .copy-btn:hover {
+      background-color: #f472b6;
+      color: white;
+    }
+
+    .qr-code {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 10px;
+      margin: 20px 0;
+      height: auto;
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #fce7f3;
+    }
+
+    .copy-section {
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    .copy-label {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    #paymentPage {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="homePage" class="card">
+    <h1>Selamat datang</h1>
+    <h3>NEWTON HOST</h3>
+    <p>Ini halaman payment resmi NEWTON HOST, jangan sampai salah transfer yaa!</p>
+    <button class="btn" onclick="goToPayment()">Go to Payment</button>
+  </div>
+
+  <div style="position: relative; width: 100%; height: 100px; overflow: hidden; margin-top: 40px;">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+      <path d="M0.00,49.98 C158.33,150.00 349.16,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+            style="stroke: none; fill: #0f172a;"></path>
+    </svg>
+  </div>
+
+  <div id="paymentPage" class="payment-card">
+    <h2>Payment - NEWTON HOST</h2>
+    <p>Gunakan QRIS di bawah atau salin nomor Dana/Gopay</p>
+
+    <img src="https://files.catbox.moe/gw227o.jpg" alt="QRIS Payment" class="qr-code" />
+
+    <div class="copy-section">
+      <div class="copy-label">Dana (Nur****):</div>
+      <button class="copy-btn" onclick="copyToClipboard('085760841527')">085760841527 (Salin)</button>
+
+      <div class="copy-label" style="margin-top: 10px;">Gopay (saizyu):</div>
+      <button class="copy-btn" onclick="copyToClipboard('085760841527')">085760841527 (Salin)</button>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <a class="btn" href="https://wa.me/6288293058238">WhatsApp</a>
+      <a class="btn" href="https://t.me/cipaa">Telegram</a>
+      <button class="btn" onclick="goToHome()">Back</button>
+    </div>
+
+    <p class="note">Terima kasih telah menggunakan layanan NEWTON HOST ✨</p>
+  </div>
+
+  <script>
+    function goToPayment() {
+      document.getElementById('homePage').style.display = 'none';
+      document.getElementById('paymentPage').style.display = 'block';
+    }
+
+    function goToHome() {
+      document.getElementById('paymentPage').style.display = 'none';
+      document.getElementById('homePage').style.display = 'block';
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        alert("Nomor berhasil disalin: " + text);
+      }, function(err) {
+        alert("Gagal menyalin teks");
+      });
+    }
+  </script>
+
+</body>
+</html>
